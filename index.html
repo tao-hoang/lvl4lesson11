@@ -50,7 +50,12 @@
         Create a conditional statement that logs "This is true" in the console
         Hint: Use the equal operator ==
         Edit the condition to change the output to "This is not true" */
-
+        let t = true
+        if (t == true){
+            console.log("This is true");
+        } else{
+            console.log("This is false")
+        }
 
 
 
@@ -62,37 +67,91 @@
         Edit the condition to change the output to "Hello world!"
         Hint: use the not equal operator != 
         */
-
+        let friend = 'buh'
+        if(friend == 'buh'){
+            console.log("Hi"+ friend);
+        } else{
+            console.log("who r u?")
+        }
       
 
         //Exercise 3
         //Select the input tag by its id and assign is variable with const keyword
-      
+        const weather = document.querySelector('#barometer')
 
         function changeWeather(evt) {
             evt.preventDefault();
             //Exercise 4
             //Get the value of the input using its variable name and the value property
             //Log its value in the console
-       
+            let pressure = weather.value;
+            console.log("Barometric pressure: "+ pressure);
 
-            /* Exercise 6
-            Create an if statement to show the sun at pressures over 30
-            Add an else to alert "not a valid barometric pressure"
-            Exercise 7
-            In between the if and else, add an else if statement to add clouds at pressures below 30
-            Exercise 8
-            Edit the else if statement you just made.
-            Use the 'and' operator to check for a range of numbers greater than or equal to 29 but less than 30
-            Exercise 9
-            Add 2 more else if statements for the following:
-            Add rain clouds for pressures greater than or equal to 28 but less than 29
-            Make rain for pressures greater than or equal to 27 but less than 28
-            Bonus
-            Add another else if for pressures under 27
-            Make it rain and play the thunderstorm audio
-            select the audio tag by its id and run the play() method on it
-            */
+            // Exercise 6
+            // Create an if statement to show the sun at pressures over 30
+            // Add an else to alert "not a valid barometric pressure"
+            
+            if (pressure >= 30){
+                sunny();
+            } else{
+                alert("invalid barometric pressure")
+            }
+
+            //Exercise 7
+            //In between the if and else, add an else if statement to add clouds at pressures below 30
+            if (pressure >= 30){
+                sunny();
+            } else if (pressure < 30){
+                addClouds();
+            } else{
+                alert("invalid barometric pressure")
+            }
+            //Exercise 8
+            //Edit the else if statement you just made.
+            //Use the 'and' operator to check for a range of numbers greater than or equal to 29 but less than 30
+            if (pressure >= 30){
+                sunny();
+            } else if (pressure >= 29 && pressure < 30){
+                addClouds();
+            } else{
+                alert("invalid barometric pressure")
+            }
+
+            //Exercise 9
+            //Add 2 more else if statements for the following:
+            //Add rain clouds for pressures greater than or equal to 28 but less than 29
+            //Make rain for pressures greater than or equal to 27 but less than 28
+            if (pressure >= 30){
+                sunny();
+            } else if (pressure >= 29 && pressure < 30){
+                addClouds();
+            } else if (pressure >= 28 && pressure < 29){
+                addRainClouds();
+            } else if (pressure >= 27 && pressure < 28){
+                rain();
+            } else{
+                alert("invalid barometric pressure")
+            }
+
+
+            //Bonus
+            //Add another else if for pressures under 27
+            //Make it rain and play the thunderstorm audio
+            //select the audio tag by its id and run the play() method on it
+            if (pressure >= 30){
+                sunny();
+            } else if (pressure >= 29 && pressure < 30){
+                addClouds();
+            } else if (pressure >= 28 && pressure < 29){
+                addRainClouds();
+            } else if (pressure >= 27 && pressure < 28){
+                rain();
+            } else if (pressure < 27){
+                rain();
+                document.querySelector('#storm').play();
+            } else{
+                alert("invalid barometric pressure")
+            }
 
           
         }
@@ -100,8 +159,8 @@
         //Exercise 5
         /*Add an event listener for the input object using its variable name
         and have it call the changeWeather function on the 'change' event */
-
-
+        weather.addEventListener('change', changeWeather);
+        
 
 
     </script>
